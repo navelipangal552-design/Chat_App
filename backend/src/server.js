@@ -7,11 +7,13 @@ import express from "express";
 
 
 import authRoutes from "./routes/auth.js";
+// import messageRoutes from "./routes/message.js";
+
 import path from "path";
 
 
 //dotenv.config(); // load .env variables
-
+import cookieParser from "cookie-parser";
 import mongoose from "mongoose";
 import { ENV } from "./lib/env.js";
 
@@ -21,13 +23,13 @@ const _dirname = path.resolve();
 const PORT = ENV.PORT;
 
 app.use(express.json());  // req.body //middleware to comm betn client and server
+app.use(cookieParser());
 
 mongoose.connect(ENV.MONGO_URI)
   .then(() => console.log("✅ MongoDB connected successfully"))
   .catch((err) => console.error("❌ MongoDB connection error:", err));
   
-
-
+  
 // app.get("/api/auth/signup",(req,res) => {
 //     res.send("Signup point");
 // })

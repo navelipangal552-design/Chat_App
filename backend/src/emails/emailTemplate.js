@@ -1,3 +1,4 @@
+
 export function createWelcomeEmailTemplate(name, clientURL) {
   return `
   <!DOCTYPE html>
